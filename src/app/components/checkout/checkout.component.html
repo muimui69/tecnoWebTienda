@@ -269,6 +269,9 @@
                 <li class="list-group-item d-flex">
                   <span>Envío</span> <span class="ms-auto fs-sm">{{envio|currency:'BOB'}}</span>
                 </li>
+                <li class="list-group-item d-flex">
+                  <span>Descuento</span> <span class="ms-auto fs-sm text-danger">-{{descuento|currency:'BOB'}}</span>
+                </li>
                 <li class="list-group-item d-flex fs-lg fw-bold">
                   <span>Total</span> <span class="ms-auto">{{total|currency:'BOB'}}</span>
                 </li>
@@ -276,6 +279,17 @@
             </div>
           </div>
 
+          <div class="row mb-9">
+              <div class="col">
+                <input name="codigo" [(ngModel)]="codigo" type="text" class="form-control" placeholder="Código de descuento">
+              </div>
+              <div class="col-auto">
+                <button (click)="aplicarCupon()" class="btn btn-dark">Aplicar</button>
+              </div>
+              <div *ngIf="msmCupon" class="col-12 text-center">
+                <span class="text-danger">{{msmCupon}}</span>
+              </div>
+          </div>
           <!-- Disclaimer -->
           <p class="mb-7 fs-xs text-gray-500">
             Sus datos personales se utilizarán para procesar su pedido, respaldar su experiencia en este sitio web y para otros fines descritos en nuestra política de privacidad.

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VisitanteService } from '../../services/visitante.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +17,8 @@ export class RegistroComponent {
   constructor(
     private route:ActivatedRoute,
     private visitanteService: VisitanteService,
-    private router:Router
+    private router:Router,
+    private toastr:ToastrService
   ){}
 
   ngOnInit(){
@@ -44,6 +46,7 @@ export class RegistroComponent {
         response=>{
           console.log(response)
           if(response.data!=undefined){
+            this.toastr.success('Registro exitoso')
             this.router.navigate(['/login'])
           }
          this.btnLoad = false

@@ -17,6 +17,8 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SidebarCuentaComponent } from './components/cuenta/sidebar-cuenta/sidebar-cuenta.component';
 import { PerfilComponent } from './components/cuenta/perfil/perfil.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { PerfilComponent } from './components/cuenta/perfil/perfil.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(),

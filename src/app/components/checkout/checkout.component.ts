@@ -3,7 +3,7 @@ import { GLOBAL } from '../../services/GLOBAL';
 import { ClienteService } from '../../services/cliente.service';
 import { VisitanteService } from '../../services/visitante.service';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 declare var paypal:any
 @Component({
   selector: 'app-checkout',
@@ -28,12 +28,18 @@ export class CheckoutComponent {
   public venta:any={};
   public detalles:Array<any>=[];
 
+  public codigo:any=''
+  public cupon:any={}
+  public msmCupon=''
+  public descuento=0
+
 
 
   constructor(
     private _visitanteService: VisitanteService,
     private _clienteService: ClienteService,
-    private _router: Router
+    private _router: Router,
+    private toastr: ToastrService
   ){
     this.venta.cliente=this.user._id;
   }
@@ -153,7 +159,8 @@ export class CheckoutComponent {
     this._clienteService.createVentaCliente(this.venta,this.token).subscribe(
       response=>{
         console.log(response)
-        this._router.navigate(['/stilo/tienda'])
+        this.toastr.success('Venta realizada con exito')
+        this._router.navigate(['/cuenta',this.user._id])
        
       },
       error=>{
@@ -162,5 +169,31 @@ export class CheckoutComponent {
     )
   }
   
+}
+
+aplicarCupon(){
+  const categorias:any=[]
+  const productos:any=[]
+  this.carrito.forEach(element=>{
+    categorias.push(element.producto.categoria)
+    productos.push(element.producto._id)
+  })
+  this._visitanteService.aplicarCupon(this.codigo,{total:this.total,categorias,productos}).subscribe(
+    response=>{
+      console.log(response)
+      if(response.data!=undefined){
+        this.cupon=response.data
+        this.msmCupon=''
+        this.descuento=(this.cupon.descuento/100)*this.total
+        this.total=this.total-this.descuento
+      }else{
+        this.msmCupon=response.message
+      }
+  
+    },
+    error=>{
+      console.log(<any>error)
+    }
+  )
 }
 }

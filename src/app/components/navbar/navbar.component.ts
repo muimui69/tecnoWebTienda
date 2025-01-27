@@ -11,7 +11,7 @@ declare var $:any;
 })
 export class NavbarComponent {
 
-  public user :any=JSON.parse(localStorage.getItem('cliente')!);
+  public user  = JSON.parse(localStorage.getItem('cliente') || 'null');
   public token = localStorage.getItem('token');
   public carrito:Array<any>=[];
   public url=GLOBAL.url

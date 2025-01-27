@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VisitanteService } from '../../services/visitante.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ public btnLoad =false
 constructor(
   private route:ActivatedRoute,
   private _visitanteService:VisitanteService,
-  private router:Router
+  private router:Router,
+  private toastr:ToastrService
 ) { }
 
 ngOnInit(): void {
@@ -43,6 +45,7 @@ loguear(){
         if(response.data!=undefined){
           localStorage.setItem('token',response.jwt)
           localStorage.setItem('cliente',JSON.stringify(response.data))
+          this.toastr.success('Bienvenido')
           this.router.navigate(['/tienda'])
         }else{
           if(response.tipo=='email'){

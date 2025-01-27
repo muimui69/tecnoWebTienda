@@ -44,6 +44,11 @@ export class VisitanteService {
     return this._http.get(this.url+'/getProductoTienda/'+slug,{headers:headers})
   }
 
+  aplicarCupon(codigo:any,data:any):Observable<any>{
+    let headers= new HttpHeaders().set('Content-Type','application/json')
+    return this._http.put(this.url+'/aplicarCupon/'+codigo,data,{headers:headers})
+  }
+
   eventoCarrito(){
     this.eventCart.emit(true)
   }
