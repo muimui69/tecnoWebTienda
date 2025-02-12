@@ -1,0 +1,20 @@
+<!-- <div class="container">
+    <div class="icono-exito">&#10004;</div>
+    <h1>¡Compra Exitosa!</h1>
+    <p>Gracias por tu compra. Recibirás un correo con los detalles de tu pedido.</p>
+    <a routerLink="/" class="btn-home">Volver a la tienda</a>
+</div> -->
+
+<div class="pago-container">
+    <h2>Escanea el QR para completar el pago</h2>
+
+    <div *ngIf="qrCode; else noQR">
+        <img [src]="qrCode" alt="QR para pagar" class="qr-code" />
+        <p>Una vez completado el pago, presiona el botón para verificar.</p>
+        <button (click)="verificarPago()">Verificar Pago</button>
+    </div>
+
+    <ng-template #noQR>
+        <p>No se pudo cargar el QR. Vuelve al <a routerLink="/checkout">Checkout</a>.</p>
+    </ng-template>
+</div>

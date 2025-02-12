@@ -19,6 +19,7 @@ import { SidebarCuentaComponent } from './components/cuenta/sidebar-cuenta/sideb
 import { PerfilComponent } from './components/cuenta/perfil/perfil.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PagoComponent } from './components/pago/pago.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarritoComponent,
     CheckoutComponent,
     SidebarCuentaComponent,
-    PerfilComponent
+    PerfilComponent,
+    PagoComponent
   ],
   imports: [
     BrowserModule,

@@ -10,24 +10,28 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SidebarCuentaComponent } from './components/cuenta/sidebar-cuenta/sidebar-cuenta.component';
 import { PerfilComponent } from './components/cuenta/perfil/perfil.component';
+import { PagoComponent } from './components/pago/pago.component';
 
 const routes: Routes = [
-  {path:'',component:InicioComponent},
-  {path:'registro',component:RegistroComponent},
-  {path:'login',component:LoginComponent},
-  {path:'cuenta/:id',component:SidebarCuentaComponent},
- 
-  {path:':tienda/cuenta-verificacion/:token',component:VerificacionComponent},
+  { path: '', component: InicioComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'cuenta/:id', component: SidebarCuentaComponent },
 
-  {path:'tienda',component:TiendaComponent},
+  { path: ':tienda/cuenta-verificacion/:token', component: VerificacionComponent },
 
-  {path:'tienda/:slug',component:ProductoComponent},
+  { path: 'tienda', component: TiendaComponent },
 
-  {path:'carrito',component:CarritoComponent},
-  {path:'checkout',component:CheckoutComponent},
- 
-  
- 
+  { path: 'tienda/:slug', component: ProductoComponent },
+
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'checkout', component: CheckoutComponent },
+
+  { path: 'pago', component: PagoComponent },
+  { path: 'pago/:transaccionId', component: PagoComponent }
+
+
+
 ];
 
 @NgModule({
